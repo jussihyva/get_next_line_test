@@ -6,7 +6,7 @@
 /*   By: jkauppi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 10:54:32 by jkauppi           #+#    #+#             */
-/*   Updated: 2019/11/01 12:01:03 by jkauppi          ###   ########.fr       */
+/*   Updated: 2019/11/01 13:20:30 by jkauppi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,12 @@ int			main(int argc, char **argv)
 		{
 			are_lines = 0;
 			index = 0;
+			line_num++;
 			while (index < FD_SIZE && fd_array[index])
 			{
 				if ((get_next_line(fd_array[index], line_buffer[index]) > 0))
 				{
-					ft_putnbr(++line_num);
+					ft_putnbr(line_num);
 					ft_putstr(": ");
 					ft_putendl(*line_buffer[index]);
 					are_lines = 1;
