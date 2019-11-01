@@ -6,7 +6,7 @@
 /*   By: jkauppi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 10:54:32 by jkauppi           #+#    #+#             */
-/*   Updated: 2019/11/01 14:27:22 by jkauppi          ###   ########.fr       */
+/*   Updated: 2019/11/01 14:55:22 by jkauppi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int			main(int argc, char **argv)
 	char		**line_buffer[FD_SIZE];
 	int			are_lines;
 
-	ft_memset(fd_array, 0, FD_SIZE);
+	ft_memset(fd_array, -1, FD_SIZE);
 	if (argc > 1)
 	{
 		index = 0;
@@ -36,7 +36,7 @@ int			main(int argc, char **argv)
 	else
 	{
 		index = 1;
-		fd_array[index - 1] = 1;
+		fd_array[index - 1] = 0;
 		line = (char **)ft_memalloc(sizeof(*line));
 		line_buffer[index - 1] = (char **)ft_memalloc(sizeof(**line_buffer));
 	}
@@ -47,7 +47,7 @@ int			main(int argc, char **argv)
 		are_lines = 0;
 		index = 0;
 		line_num++;
-		while (index < FD_SIZE && fd_array[index] && fd_array[index] >= 0)
+		while (index < FD_SIZE && fd_array[index] >= 0)
 		{
 			if ((get_next_line(fd_array[index], line_buffer[index]) > 0))
 			{
@@ -57,7 +57,7 @@ int			main(int argc, char **argv)
 				are_lines = 1;
 			}
 			else
-				fd_array[index] = 0;
+				fd_array[index] = -1;
 			index++;
 		}
 	}
