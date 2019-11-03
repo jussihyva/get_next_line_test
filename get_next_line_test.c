@@ -29,7 +29,6 @@ int			main(int argc, char **argv)
 		while (++index < argc)
 		{
 			fd_array[index - 1] = open(argv[index], O_RDONLY);
-			line = (char **)ft_memalloc(sizeof(*line));
 			line_buffer[index - 1] = (char **)ft_memalloc(sizeof(**line_buffer));
 		}
 	}
@@ -37,7 +36,6 @@ int			main(int argc, char **argv)
 	{
 		index = 1;
 		fd_array[index - 1] = 0;
-		line = (char **)ft_memalloc(sizeof(*line));
 		line_buffer[index - 1] = (char **)ft_memalloc(sizeof(**line_buffer));
 	}
 	line_num = 0;
@@ -54,6 +52,7 @@ int			main(int argc, char **argv)
 				ft_putnbr(line_num);
 				ft_putstr(": ");
 				ft_putendl(*line_buffer[index]);
+				ft_memdel(line_buffer + index);
 				are_lines = 1;
 			}
 			else
