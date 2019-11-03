@@ -52,7 +52,7 @@ int			main(int argc, char **argv)
 				ft_putnbr(line_num);
 				ft_putstr(": ");
 				ft_putendl(*line_buffer[index]);
-				ft_memdel(line_buffer + index);
+				ft_strdel(line_buffer + index);
 				are_lines = 1;
 			}
 			else
