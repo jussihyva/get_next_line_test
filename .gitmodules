@@ -1,3 +1,6 @@
 [submodule "42FileChecker"]
 	path = 42FileChecker
 	url = https://github.com/jgigault/42FileChecker.git
+[submodule "get-next-line"]
+	path = get-next-line
+	url = https://github.com/mokolodi1/get-next-line.git
