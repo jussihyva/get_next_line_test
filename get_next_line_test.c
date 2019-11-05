@@ -6,7 +6,7 @@
 /*   By: jkauppi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 10:54:32 by jkauppi           #+#    #+#             */
-/*   Updated: 2019/11/04 15:20:40 by jkauppi          ###   ########.fr       */
+/*   Updated: 2019/11/05 15:42:52 by jkauppi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int			main(int argc, char **argv)
 		while (++index < argc)
 		{
 			fd_array[index - 1] = open(argv[index], O_RDONLY);
+			if (fd_array[index - 1] == -1)
+				fd_array[index - 1] = atoi(argv[index]);
 			line_buffer[index - 1] = (char **)ft_memalloc(sizeof(*line_buffer));
 		}
 	}
@@ -47,21 +49,21 @@ int			main(int argc, char **argv)
 		line_num++;
 		while (index < FD_SIZE && fd_array[index] >= 0)
 		{
-			if ((ret = get_next_line(fd_array[index], line_buffer[index]) > 0))
+			if ((ret = get_next_line(fd_array[index], line_buffer[index])) > 0)
 			{
-				ft_putnbr(line_num);
+				ft_putnbr(ret);
 				ft_putstr(": ");
-				if (ret == -1)
-				{
-					ft_putchar('\n');
-					return (-1);
-				}
 				ft_putendl(*line_buffer[index]);
 //				ft_strdel(*line_buffer + index);
 				are_lines = 1;
 			}
 			else
+			{
+				ft_putnbr(ret);
+				ft_putstr(": ");
+				ft_putchar('\n');
 				fd_array[index] = -1;
+			}
 			index++;
 		}
 	}
