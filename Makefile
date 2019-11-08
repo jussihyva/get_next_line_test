@@ -11,12 +11,12 @@
 # **************************************************************************** #
 
 NAME			=	get_next_line_test
-INCLUDES		=	../get_next_line_2/
-SRCS			=	../get_next_line_2/
-CC				=	clang
+SRCS			=	../get_next_line/
+INCLUDES		=	$(SRCS)
+CC			=	clang
 LIB_FOLDER		=	$(INCLUDES)/libft
 LIB_NAME		=	ft
-FLAGS			=	-g -Wall -Werror -Wextra -I $(INCLUDES) -I $(INCLUDES)/libft
+FLAGS			=	-g -Wall -Werror -Wextra -I $(INCLUDES) -I $(LIB_FOLDER)
 C_FUNCTIONS		=	get_next_line
 
 
