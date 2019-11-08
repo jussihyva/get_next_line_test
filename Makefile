@@ -28,18 +28,17 @@ all: $(NAME)
 .PHONY: all
 
 $(NAME): $(O_FILES) $(NAME).c $(INCLUDES)$(C_FUNCTIONS).h
-	@$(CC) $(FLAGS) -o $(NAME) $(NAME).c  $(C_FILES) -L $(LIB_FOLDER) -l $(LIB_NAME)
+	$(CC) $(FLAGS) -o $(NAME) $(NAME).c  $(C_FILES) -L $(LIB_FOLDER) -l $(LIB_NAME)
 
 $(O_FILES):%.o:$(INCLUDES)%.c
-	@$(CC) $(FLAGS) -c -o $@ $<
-	@norminette $<
+	$(CC) $(FLAGS) -c -o $@ $<
 
 clean:
-	@\rm -f $(O_FILES)
-	@\rm -f $(D_FILES)
+	\rm -f $(O_FILES)
+	\rm -f $(D_FILES)
 
 fclean: clean
-	@\rm -f $(NAME)
+	\rm -f $(NAME)
 .PHONY: fclean
 
 re: fclean all
