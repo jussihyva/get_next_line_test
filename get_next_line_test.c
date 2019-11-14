@@ -6,7 +6,7 @@
 /*   By: jkauppi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 10:54:32 by jkauppi           #+#    #+#             */
-/*   Updated: 2019/11/09 13:59:56 by jkauppi          ###   ########.fr       */
+/*   Updated: 2019/11/14 12:20:59 by jkauppi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void ft_simple_string_1()
         close(p[1]);
         dup2(out, fd);
         get_next_line(p[0], &line);
-		ft_putendl(line);
+//		ft_putendl(line);
 }
 
 static void ft_simple_string_2()
@@ -49,9 +49,9 @@ static void ft_simple_string_2()
         close(p[1]);
         dup2(out, fd);
         get_next_line(p[0], &line);
-		ft_putendl(line);
+//		ft_putendl(line);
         get_next_line(p[0], &line);
-		ft_putendl(line);
+//		ft_putendl(line);
 }
 
 int			main(int argc, char **argv)
@@ -65,7 +65,13 @@ int			main(int argc, char **argv)
 
 	ft_simple_string_1();
 	ft_simple_string_2();
-	ft_memset(fd_array, -1, FD_SIZE);
+	ft_memset(fd_array, 0, FD_SIZE);
+	index = 0;
+	while (index < FD_SIZE)
+	{
+		fd_array[index] = -1;
+		index++;
+	}
 	if (argc > 1)
 	{
 		index = 0;
@@ -90,22 +96,25 @@ int			main(int argc, char **argv)
 		are_lines = 0;
 		index = 0;
 		line_num++;
-		while (index < FD_SIZE && fd_array[index] != -1)
+		while (index < FD_SIZE)
 		{
-			if ((ret = get_next_line(fd_array[index], line_buffer[index])) > 0)
+			if (fd_array[index] != -1)
 			{
-				ft_putnbr(ret);
-				ft_putstr(": ");
-				ft_putendl(*line_buffer[index]);
-				ft_strdel(*line_buffer + index);
-				are_lines = 1;
-			}
-			else
-			{
-				ft_putnbr(ret);
-				ft_putstr(": ");
-				ft_putchar('\n');
-				fd_array[index] = -1;
+				if ((ret = get_next_line(fd_array[index], line_buffer[index])) > 0)
+				{
+					ft_putnbr(ret);
+					ft_putstr(": ");
+					ft_putendl(*line_buffer[index]);
+//					ft_strdel(*line_buffer + index);
+					are_lines = 1;
+				}
+				else
+				{
+					ft_putnbr(ret);
+					ft_putstr(": ");
+					ft_putchar('\n');
+					fd_array[index] = -1;
+				}
 			}
 			index++;
 		}
