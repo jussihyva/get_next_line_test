@@ -6,7 +6,7 @@
 /*   By: jkauppi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 10:54:32 by jkauppi           #+#    #+#             */
-/*   Updated: 2019/11/14 12:20:59 by jkauppi          ###   ########.fr       */
+/*   Updated: 2019/11/14 14:20:44 by jkauppi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ int			main(int argc, char **argv)
 {
 	size_t		line_num;
 	int			index;
-	int			fd_array[FD_SIZE];
-	char		**line_buffer[FD_SIZE];
+	int			fd_array[2042];
+	char		**line_buffer[2042];
 	int			are_lines;
 	int			ret;
 
 	ft_simple_string_1();
 	ft_simple_string_2();
-	ft_memset(fd_array, 0, FD_SIZE);
+	ft_memset(fd_array, 0, 2042);
 	index = 0;
-	while (index < FD_SIZE)
+	while (index < 2042)
 	{
 		fd_array[index] = -1;
 		index++;
@@ -96,7 +96,7 @@ int			main(int argc, char **argv)
 		are_lines = 0;
 		index = 0;
 		line_num++;
-		while (index < FD_SIZE)
+		while (index < 2042)
 		{
 			if (fd_array[index] != -1)
 			{
