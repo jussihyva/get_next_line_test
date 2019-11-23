@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 #include <fcntl.h>
 /*
 static void ft_simple_string_1()
@@ -62,7 +62,13 @@ int			main(int argc, char **argv)
 	if (argc == 2)
 	{
 		file = open(argv[1], O_RDONLY);
-		while (ft_get_next_line(file, &line) == 1)
+		while (get_next_line(file, &line) == 1)
+			ft_putendl(line);
+	}
+	if (argc == 3)
+	{
+		file = open(argv[2], O_RDONLY);
+		while (get_next_line(file, &line) == 1)
 			;
 	}
 	return (0);

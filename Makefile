@@ -13,11 +13,11 @@
 NAME			=	get_next_line_test
 SRCS			=	../get_next_line/
 INCLUDES		=	$(SRCS)
-CC			=	clang
+CC			=	gcc
 LIB_FOLDER		=	$(INCLUDES)/libft
 LIB_NAME		=	ft
-FLAGS			=	-g -Wall -Werror -Wextra -I $(LIB_FOLDER)
-C_FUNCTIONS		=
+FLAGS			=	-g -Wall -Werror -Wextra -I $(LIB_FOLDER) -I $(INCLUDES)
+C_FUNCTIONS		=       get_next_line
 
 
 C_FILES		=	$(addprefix $(SRCS), $(addsuffix .c, $(C_FUNCTIONS)))
