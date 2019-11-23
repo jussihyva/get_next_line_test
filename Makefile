@@ -6,12 +6,12 @@
 #    By: jkauppi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/31 10:58:39 by jkauppi           #+#    #+#              #
-#    Updated: 2019/11/14 14:21:11 by jkauppi          ###   ########.fr        #
+#    Updated: 2019/11/23 13:13:26 by jkauppi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	get_next_line_test
-SRCS			=	../get_next_line_jkauppi/
+SRCS			=	../get_next_line/
 INCLUDES		=	$(SRCS)
 CC			=	clang
 LIB_FOLDER		=	$(INCLUDES)/libft
