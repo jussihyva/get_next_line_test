@@ -6,13 +6,13 @@
 /*   By: jkauppi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 10:54:32 by jkauppi           #+#    #+#             */
-/*   Updated: 2019/11/14 14:20:44 by jkauppi          ###   ########.fr       */
+/*   Updated: 2019/11/23 15:23:50 by jkauppi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 #include <fcntl.h>
-
+/*
 static void ft_simple_string_1()
 {
         char    *line;
@@ -29,7 +29,7 @@ static void ft_simple_string_1()
         close(p[1]);
         dup2(out, fd);
         get_next_line(p[0], &line);
-//		ft_putendl(line);
+		ft_putendl(line);
 }
 
 static void ft_simple_string_2()
@@ -49,81 +49,22 @@ static void ft_simple_string_2()
         close(p[1]);
         dup2(out, fd);
         get_next_line(p[0], &line);
-//		ft_putendl(line);
+		ft_putendl(line);
         get_next_line(p[0], &line);
-//		ft_putendl(line);
+		ft_putendl(line);
 }
-
+*/
 int			main(int argc, char **argv)
 {
-	size_t		line_num;
-	int			index;
-	int			fd_array[2042];
-	char		**line_buffer[2042];
-	int			are_lines;
-	int			ret;
+	int		file;
+	char	*line;
 
-	ft_simple_string_1();
-	ft_simple_string_2();
-	ft_memset(fd_array, 0, 2042);
-	index = 0;
-	while (index < 2042)
+	if (argc == 2)
 	{
-		fd_array[index] = -1;
-		index++;
+		file = open(argv[1], O_RDONLY);
+		while (ft_get_next_line(file, &line) == 1)
+			;
 	}
-	if (argc > 1)
-	{
-		index = 0;
-		while (++index < argc)
-		{
-			fd_array[index - 1] = open(argv[index], O_RDONLY);
-			if (fd_array[index - 1] == -1)
-				fd_array[index - 1] = atoi(argv[index]);
-			line_buffer[index - 1] = (char **)ft_memalloc(sizeof(*line_buffer));
-		}
-	}
-	else
-	{
-		index = 1;
-		fd_array[index - 1] = 0;
-		line_buffer[index - 1] = (char **)ft_memalloc(sizeof(*line_buffer));
-	}
-	line_num = 0;
-	are_lines = 1;
-	while (are_lines)
-	{
-		are_lines = 0;
-		index = 0;
-		line_num++;
-		while (index < 2042)
-		{
-			if (fd_array[index] != -1)
-			{
-				if ((ret = get_next_line(fd_array[index], line_buffer[index])) > 0)
-				{
-					ft_putnbr(ret);
-					ft_putstr(": ");
-					ft_putendl(*line_buffer[index]);
-//					ft_strdel(*line_buffer + index);
-					are_lines = 1;
-				}
-				else
-				{
-					ft_putnbr(ret);
-					ft_putstr(": ");
-					ft_putchar('\n');
-					fd_array[index] = -1;
-				}
-			}
-			index++;
-		}
-	}
-//	while (1 == 1)
-//	{
-//		continue ;
-//	}
-	ft_simple_string_1();
-	ft_simple_string_2();
 	return (0);
 }
+

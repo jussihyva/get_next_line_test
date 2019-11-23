@@ -6,7 +6,7 @@
 #    By: jkauppi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/31 10:58:39 by jkauppi           #+#    #+#              #
-#    Updated: 2019/11/23 13:13:26 by jkauppi          ###   ########.fr        #
+#    Updated: 2019/11/23 15:28:14 by jkauppi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ INCLUDES		=	$(SRCS)
 CC			=	clang
 LIB_FOLDER		=	$(INCLUDES)/libft
 LIB_NAME		=	ft
-FLAGS			=	-g -Wall -Werror -Wextra -I $(INCLUDES) -I $(LIB_FOLDER)
-C_FUNCTIONS		=	get_next_line
+FLAGS			=	-g -Wall -Werror -Wextra -I $(LIB_FOLDER)
+C_FUNCTIONS		=
 
 
 C_FILES		=	$(addprefix $(SRCS), $(addsuffix .c, $(C_FUNCTIONS)))
@@ -27,7 +27,7 @@ D_FILES		=	                     $(addsuffix .d, $(C_FUNCTIONS))
 all: $(NAME)
 .PHONY: all
 
-$(NAME): $(O_FILES) $(NAME).c $(INCLUDES)$(C_FUNCTIONS).h
+$(NAME): $(O_FILES) $(NAME).c
 	$(CC) $(FLAGS) -o $(NAME) $(NAME).c  $(C_FILES) -L $(LIB_FOLDER) -l $(LIB_NAME)
 
 $(O_FILES):%.o:$(INCLUDES)%.c
