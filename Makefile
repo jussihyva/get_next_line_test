@@ -6,7 +6,7 @@
 #    By: jkauppi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/31 10:58:39 by jkauppi           #+#    #+#              #
-#    Updated: 2019/11/23 15:28:14 by jkauppi          ###   ########.fr        #
+#    Updated: 2020/08/08 18:27:18 by jkauppi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ INCLUDES		=	$(SRCS)
 CC			=	gcc
 LIB_FOLDER		=	$(INCLUDES)/libft
 LIB_NAME		=	ft
-FLAGS			=	-g -Wall -Werror -Wextra -I $(LIB_FOLDER) -I $(INCLUDES)
+FLAGS			=	-g -Wall -Werror -Wextra -I $(LIB_FOLDER) -I $(INCLUDES) -I $(INCLUDES)/libft/includes
 C_FUNCTIONS		=       get_next_line
 
 
