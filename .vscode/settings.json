@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"get_next_line.h": "c"
+	},
+	"C_Cpp.default.includePath":
+	[
+		"${default}",
+		"../get_next_line"
+	]
+}
